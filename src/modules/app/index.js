@@ -35,9 +35,38 @@ export default class AppRoot extends React.Component<{
     //setInterval(() => App.fetchState(), 3000)
   }
 
-  render() {
-    const { available, date, error } = this.props
+  renderStatus() {
+    const { available } = this.props
+    return (
+      <span className={styles.status}>
+        <span>{'Status:'}</span>
+        {available ? (
+          <span className={styles.success}>Empty</span>
+        ) : (
+          <span className={styles.danger}>Occupied</span>
+        )}
+      </span>
+    )
+  }
 
+  renderDate() {
+    const { date } = this.props
+    return (
+      <span className={styles.date}>
+        <span>{'Active:'}</span>
+        <span>{moment(date).fromNow()}</span>
+      </span>
+    )
+  }
+
+  renderError() {
+    const { error } = this.props
+    return error ? (
+      <span>{`Error: ${error}`}</span>
+    ) : null
+  }
+
+  render() {
     return (
       <div className={styles.app}>
         <Helmet
@@ -48,12 +77,18 @@ export default class AppRoot extends React.Component<{
           ]}
         />
 
-        <span>Available: {available ? 'true' : 'false'}</span>
-        <span>Date: {moment(date).fromNow()}</span>
+        <section>
+          {this.renderStatus()}
+          {this.renderDate()}
+          {this.renderError()}
+        </section>
 
-        { error ? (
-          <span>Error: {error}</span>
-        ) : null }
+        <footer>
+          <span>Alexander Vitiuk</span>
+          <a href="https://github.com/averted" target="_blank">github.com/averted</a>
+          <a href="https://github.com/thunderbox-client" target="_blank">github.com/thunderbox-client</a>
+          <a href="https://github.com/thunderbox-server" target="_blank">github.com/thunderbox-server</a>
+        </footer>
       </div>
     )
   }

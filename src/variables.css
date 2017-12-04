@@ -4,15 +4,15 @@
   --danger-color: red;
   --success-color: #00cc00;
 
-  --font-color: #333;
-  --background-color: #fafafa;
+  --font-color: #cdcfcb;
+  --background-color: #28343a;
 
   --gray-lightest: #fafafa;
   --gray-lighter: #c7c7c7;
   --gray-light: #c7c7c7;
   --gray: #d7d7d7;
   --gray-dark: #b7b7b7;
-  --gray-darker: #555555;
+  --gray-darker: #777;
   --gray-darkest: #222222;
 
   --gutter-smaller: 5px;
