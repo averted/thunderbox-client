@@ -1,0 +1,9 @@
+module.exports = {
+  api: {
+    host: 'http://localhost:3020'   // api host
+  },
+  analytics: {
+    gaId: '',
+    gaLabel: ''
+  }
+}

@@ -1,0 +1,27 @@
+[ignore]
+.*node_modules/*
+
+[include]
+.*/src/.*
+
+[libs]
+./flow-typed/npm/
+./flow-interfaces/
+
+[options]
+esproposal.class_static_fields=ignore
+esproposal.class_instance_fields=ignore
+esproposal.decorators=ignore
+unsafe.enable_getters_and_setters=true
+
+module.system=haste
+
+module.name_mapper='^\(types\|actions\|components\|decorators\)$' -> '<PROJECT_ROOT>/src/\1'
+module.name_mapper='^\(types\|actions\)\/\(.*\)$' -> '<PROJECT_ROOT>/src/\1/\2'
+module.name_mapper='^config' -> '<PROJECT_ROOT>/config/config.js'
+
+module.name_mapper='.*\(.css\)' -> 'CSSModule'
+module.name_mapper='.*\(.ico\)' -> 'ImageModule'
+
+module.name_mapper.extension='css' -> 'CSSModule'
+module.name_mapper.extension='styl' -> 'CSSModule'
