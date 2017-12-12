@@ -5,7 +5,8 @@ import * as App from 'actions/app'
 type State = {
   date: any,
   error: any,
-  available: boolean
+  available: boolean,
+  graph: ?Object
 }
 
 type Action = {
@@ -13,14 +14,16 @@ type Action = {
   error?: string,
   state: {
     date: string,
-    available: boolean
+    available: boolean,
+    graph: ?Object
   }
 }
 
 const initialState = {
   date: null,
   error: null,
-  available: true
+  available: true,
+  graph: null
 }
 
 export default function(state: State = initialState, action: Action): State {
@@ -30,6 +33,7 @@ export default function(state: State = initialState, action: Action): State {
         date: { $set: action.state.date },
         error: { $set: null },
         available: { $set: action.state.available },
+        graph: { $set: action.state.graph }
       })
 
     case App.FETCH_STATE_ERROR:
