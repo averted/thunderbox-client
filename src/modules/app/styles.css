@@ -127,4 +127,17 @@ b, strong {
       color: var(--gray);
     }
   }
+
+  & canvas {
+    position: absolute;
+    padding: 5%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @media all and (max-width: 899px) {
+      margin-top: 100px;
+    }
+  }
 }

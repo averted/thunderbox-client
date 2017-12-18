@@ -84,23 +84,31 @@ export default class AppRoot extends React.Component<{
     }
 
     const data = {
-      labels: Object.keys(graph),
+      labels: Object.keys(graph).map(x => `${x}:00`),
       datasets: [{
         data: Object.values(graph),
         fill: false,
         borderWidth: 2,
         borderColor: 'red',
-        lineTension: 0,
+        lineTension: 0.2,
         borderJoinStyle: 'round',
-        pointBorderColor: 'transparent',
-        pointBackgroundColor: 'transparent',
+        pointBorderColor: 'red',
+        pointBackgroundColor: 'black',
         pointHoverBorderColor: 'red', // TODO (style config bg color)
         pointHoverBackgroundColor: 'black', // TODO (style config bg color)
       }]
     }
 
     const options = {
-      responsive: false,
+      responsive: true,
+      layout: {
+        padding: {
+          top: 10,
+          right: 10,
+          bottom: 10,
+          left: 10,
+        }
+      },
       legend: {
         display: false,
       },
@@ -121,6 +129,7 @@ export default class AppRoot extends React.Component<{
         }],
         xAxes: [{
           ticks: {
+            display: false,
             fontColor: '#777',
             fontStyle: 'bold',
             fontFamily: "'Fira Mono', monospace",
@@ -131,10 +140,10 @@ export default class AppRoot extends React.Component<{
         point: {
           pointStyle: 'circle',
           borderWidth: 1,
-          radius: 2,
-          hoverRadius: 3,
+          radius: 3,
+          hoverRadius: 5,
           hoverBorderWidth: 0,
-          hitRadius: 25,
+          hitRadius: 50,
         }
       }
     }
@@ -173,7 +182,7 @@ export default class AppRoot extends React.Component<{
           <a href="https://github.com/thunderbox-server" target="_blank">github.com/thunderbox-server</a>
         </footer>
 
-        <canvas ref={x => this.chart = x} width="600" height="200"></canvas>
+        <canvas ref={x => this.chart = x} width="400" height="160"></canvas>
       </div>
     )
   }
